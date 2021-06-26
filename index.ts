@@ -1,4 +1,4 @@
-import { getOpAladdin } from './src/api/baidu_op_calendar'
+import { getOpAladdin } from './api/baidu_op_calendar'
 
 async function main() {
     const res = await getOpAladdin(2021, 3)

@@ -30,6 +30,7 @@ export interface Almanac {
     value: string // 国家纪念日、国际节日、三九天（如国际艾滋病日、中国国家警察日、一九等）
     year: number // 公历年份
     status: Almanac_status // 类型
+    date?: string
 }
 
 interface OpAladdinRes {

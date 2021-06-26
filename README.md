@@ -1,17 +1,22 @@
 # op-calendar
 
 抓取百度万年历API获取日期详细信息
-文件导出至 ./src/export_data 中，每年一个文件 `${year}.json`
+文件导出至 ./lib 中，每年一个文件 `${year}.json`
 文件内容为`Almanac[]`，当年1月1日至12月31日，按时间排序，具体定义下文定义部分
 
 ## Usage
+
+数据抓取
 
 ```bash
 npm i
 npm run dump_data // 默认抓取2011-2022年的数据
 ```
 
+[应用示例](https://github.com/sosohime/op-calendar/demo/area-rainfall.html)
+
 ## 定义
+
 ```typescript
 enum Almanac_status {
     HOLIDAY = "1", // 因为节日休息
@@ -46,8 +51,14 @@ export interface Almanac {
 }
 ```
 
+### TODOLIST
+
+1. 当前数据无法根据单天数据推测法定假日数据，如国庆放假7天，仅10月1日当天desc为国庆节
+
 ----
+
 ### 关于type字段的推测
+
 尝试从`value`、`term`、`desc`三个字段，来分析，尚未得出结论
 
 ```json
@@ -76,4 +87,3 @@ h : ["元旦","植树节","五四青年节","儿童节","香港回归日","建�
 c : ["平安夜","圣诞节"]
 a : ["情人节","父亲节","感恩节"]
 ```
-

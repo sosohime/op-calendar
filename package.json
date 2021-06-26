@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node ./index.ts",
-    "dump_data": "ts-node ./src/script/dump_op_aladdin_data.ts"
+    "dump_data": "ts-node ./script/dump_op_aladdin_data.ts"
   },
   "repository": {
     "type": "git",
