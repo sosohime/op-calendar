@@ -13,7 +13,8 @@ npm i
 npm run dump_data // 默认抓取2011-2022年的数据
 ```
 
-[应用示例](https://github.com/sosohime/op-calendar/demo/area-rainfall.html)
+应用示例
+./demo/area-rainfall.html
 
 ## 定义
 
