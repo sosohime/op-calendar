@@ -1,16 +1,17 @@
 # op-calendar
 
 抓取百度万年历API获取日期详细信息
+文件导出至 ./src/export_data 中，每年一个文件 `${year}.json`
+文件内容为`Almanac[]`，当年1日至12月31日，按时间排序，具体定义下文定义部分
 
 ## Usage
 
 ```bash
 npm i
 npm run dump_data // 默认抓取2011-2022年的数据
-
-// 文件导出至 ./src/export_data 中
 ```
 
+## 定义
 ```typescript
 enum Almanac_status {
     HOLIDAY = "1", // 因为节日休息
@@ -46,7 +47,8 @@ export interface Almanac {
 ```
 
 ----
-关于type字段的推测: 尝试从`value`、`term`、`desc`三个字段，来分析，尚未得出结论
+### 关于type字段的推测
+尝试从`value`、`term`、`desc`三个字段，来分析，尚未得出结论
 
 ```json
 value
