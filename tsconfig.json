@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+      "lib": ["ES2015"],
+      "module": "commonjs",
+      "outDir": "dist",
+      "sourceMap": true,
+      "strict": true,
+      "target": "es2015",
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true
+  },
+  "include": [
+      "src"
+, "index.ts"  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "op-calendar",
+  "version": "0.0.1",
+  "description": "包含节假日信息\\调休\\农历\\农历节日的日历",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node ./index.ts",
+    "dump_data": "ts-node ./src/script/dump_op_aladdin_data.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sosohime/op-calendar.git"
+  },
+  "author": "sosohime",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sosohime/op-calendar/issues"
+  },
+  "homepage": "https://github.com/sosohime/op-calendar#readme",
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "ts-node": "^10.0.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "moment": "^2.29.1"
+  }
+}
