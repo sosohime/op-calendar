@@ -14,6 +14,7 @@ npm run dump_data // 默认抓取2011-2022年的数据
 ```
 
 应用示例
+[雨量-流量-节假日关系图](https://yuanbo.online/op_demo/)
 ./demo/area-rainfall.html
 
 ## 定义
@@ -50,6 +51,35 @@ export interface Almanac {
     year: number // 公历年份
     status: Almanac_status // 类型
 }
+```
+
+```json
+{
+        "animal": "虎",
+        "avoid": "装修.入宅.动土.安床.出行.上梁.作灶.旅游.修造.伐木.经络.求医.竖柱.作梁.词讼.置产.出师.打官司",
+        "cnDay": "六",
+        "day": "1",
+        "desc": "元旦",
+        "festival": "元旦",
+        "gzDate": "丙辰",
+        "gzMonth": "戊子",
+        "gzYear": "庚寅",
+        "isBigMonth": "",
+        "lDate": "廿七",
+        "lMonth": "十一",
+        "lunarDate": "27",
+        "lunarMonth": "11",
+        "lunarYear": "2010",
+        "month": "1",
+        "oDate": "2010-12-31T16:00:00.000Z",
+        "status": "1",
+        "suit": "搬家.开业.结婚.领证.开工.订婚.安葬.开张.入学.求嗣.破土.祈福.祭祀.拆卸.开市.纳财.纳畜.裁衣.出火.开光.嫁娶.纳采.移徙.盖屋.冠笄.斋醮.求财.招赘.挂匾.纳婿",
+        "term": "",
+        "type": "h",
+        "value": "元旦",
+        "year": "2011",
+        "date": "2011-1-1"
+    },
 ```
 
 ### TODOLIST

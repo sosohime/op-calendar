@@ -8011,7 +8011,7 @@ option = {
     // date?: string
             return `<div>
                 <p>${_date}</p>
-                ${status === '1' ? `<p>法定节日-${desc || term || value || '???'}</p>` : ''}
+                ${status === '1' ? `<p>法定节日-${desc || term || value || ''}</p>` : ''}
                 ${status === '2' ? `<p>补班日</p>` : ''}
                 ${['六', '日'].includes(cnDay) ? `<p>周末</p>` : ''}
                 <p>${params[0].marker}${params[0].seriesName}${params[0].value}</p>
