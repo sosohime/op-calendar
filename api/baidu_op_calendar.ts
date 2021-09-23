@@ -55,6 +55,6 @@ export async function getOpAladdin(year: number, month: number): Promise<Almanac
 
     // 日期按时间线排序
     return res.data[0].almanac.map(a => {
-        return {...a, date: a.date || moment(a.oDate).utcOffset(8).format('YYYYMMDD')}
+        return {...a, date: moment(a.oDate).utcOffset(8).format('YYYYMMDD')}
     }).sort((a, b) => moment(b.oDate).diff(moment(a.oDate))) as Almanac[]
 }
