@@ -62,10 +62,9 @@ async function dumpFullYearData(year: number) {
         for(const mounth of MOUNTH_OF_YEAR) {
             const data = injectLegalHoliday(await getOpAladdin(year, mounth), holidays);
             data.forEach(almanac => {
-                const { year: _year, month: _month, day: _day } = almanac
+                const { year: _year, date } = almanac
                 if(+_year === +year) {
-                    const date =`${_year}-${_month}-${_day}`
-                    dataMap[date] = {...almanac, date}
+                    dataMap[date] = almanac
                 }
             })
         }
