@@ -1,7 +1,7 @@
 # op-calendar
 
 抓取百度万年历API获取日期详细信息
-文件导出至 ./lib 中，每年一个文件 `${year}.json`
+文件导出至 ./export 中，每年一个文件 `${year}.json`
 文件内容为`Almanac[]`，当年1月1日至12月31日，按时间排序，具体定义下文定义部分
 
 ## Usage
@@ -50,6 +50,8 @@ export interface Almanac {
     value: string // 国家纪念日、国际节日、三九天（如国际艾滋病日、中国国家警察日、一九等）
     year: number // 公历年份
     status: Almanac_status // 类型
+
+    legalHoliday: string // 当 status = 1时，标识出因为哪个法定节日休息
 }
 ```
 
@@ -78,7 +80,8 @@ export interface Almanac {
         "type": "h",
         "value": "元旦",
         "year": "2011",
-        "date": "2011-1-1"
+        "date": "2011-1-1",
+        "legalHoliday": "元旦"
     },
 ```
 

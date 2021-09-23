@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 
 enum Almanac_status {
     HOLIDAY = "1", // 因为节日休息
@@ -31,6 +32,8 @@ export interface Almanac {
     year: number // 公历年份
     status: Almanac_status // 类型
     date?: string
+
+    legalHoliday?: string
 }
 
 interface OpAladdinRes {
@@ -50,5 +53,8 @@ export async function getOpAladdin(year: number, month: number): Promise<Almanac
     const json_string = jsonp_res.data.split('op_aladdin_callback(').pop().split(')').shift()
     const res = JSON.parse(json_string) as OpAladdinRes
 
-    return res.data[0].almanac as Almanac[]
+    // 日期按时间线排序
+    return res.data[0].almanac.map(a => {
+        return {...a, date: a.date || moment(a.oDate).utcOffset(8).format('YYYYMMDD')}
+    }).sort((a, b) => moment(b.oDate).diff(moment(a.oDate))) as Almanac[]
 }
