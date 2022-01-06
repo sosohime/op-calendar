@@ -89,7 +89,9 @@ export interface Almanac {
 
 ### TODOLIST
 
-1. 当前数据无法根据单天数据推测法定假日数据，如国庆放假7天，仅10月1日当天desc为国庆节
+1. <del>当前数据无法根据单天数据推测法定假日数据，如国庆放假7天，仅10月1日当天desc为国庆节</del>
+    
+    增加`legalHoliday`字段，使用脚本导出时，自动补全节日[dump_op_aladdin_data.ts](https://github.com/sosohime/op-calendar/blob/b9ea33a2f3a494f56d8c24677ec50be0c3671037/script/dump_op_aladdin_data.ts#L16)
 
 ----
 
