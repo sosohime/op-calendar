@@ -79,7 +79,7 @@ async function dumpFullYearData(year: number) {
 
 async function main() {
     // 2015 - 2022年
-    const dump_years = Array.from({length: 8}).map((v, i) => i + 2015)
+    const dump_years = Array.from({length: 23}).map((v, i) => i + 2000)
     for(const year of dump_years) {
         await dumpFullYearData(year)
     }

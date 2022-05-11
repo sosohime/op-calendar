@@ -18,7 +18,24 @@ async function pickAndMerge(years: number[], keys: (keyof Almanac)[]): Promise<v
             map[obj.date] = obj
         })
     }
-    await fs.writeFileSync(`${DUMP_DIR}/merge-${years[0]}-${years[years.length - 1]}.json`, JSON.stringify(map))
+    await fs.writeFileSync(`${DUMP_DIR}/${years[0]}-${years[years.length - 1]}.json`, JSON.stringify(map))
 }
 
-pickAndMerge([2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022], ['date', 'cnDay', 'desc', 'term', 'day', 'value','month', 'year', 'status', 'legalHoliday'])
+const needKeys: (keyof Almanac)[] = [
+    'date', 'cnDay', 'desc', 'term', 'day', 'value','month', 'year', 'status', 'legalHoliday'
+]
+
+let startYear = 2000
+const endYear = 2023
+
+// 穷举年份组合（如2011年 - 2020年，2021年 - 2022年）
+while(startYear < endYear) {
+    let len = 1
+    while(len < (endYear - startYear + 1)) {
+        const years = Array.from({length: len + 1}).map((v, i) => i + startYear)
+        pickAndMerge(years, needKeys)
+        len ++
+    }
+    
+    startYear++
+}
