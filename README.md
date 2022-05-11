@@ -12,7 +12,9 @@
 
 ```bash
 npm i
-npm run dump_data // 默认抓取2011-2022年的数据
+npm run dump_data // 默认抓取2015-2022年的数据 `./export/${year}.json`
+
+npm run merge_data // 合并到同一个文件 `./export/merge-2015-2022.json`
 ```
 
 应用示例

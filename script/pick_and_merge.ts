@@ -21,4 +21,4 @@ async function pickAndMerge(years: number[], keys: (keyof Almanac)[]): Promise<v
     await fs.writeFileSync(`${DUMP_DIR}/merge-${years[0]}-${years[years.length - 1]}.json`, JSON.stringify(map))
 }
 
-pickAndMerge([2020, 2021, 2022], ['date', 'cnDay', 'desc', 'term', 'day', 'value','month', 'year', 'status', 'legalHoliday'])
+pickAndMerge([2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022], ['date', 'cnDay', 'desc', 'term', 'day', 'value','month', 'year', 'status', 'legalHoliday'])
