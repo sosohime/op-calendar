@@ -42,7 +42,8 @@ interface OpAladdinRes {
         almanac: Almanac[]
     }[];
 }
-
+// FIXME: 接口已经换了，需要重新适配
+// https://opendata.baidu.com/data/inner?tn=reserved_all_res_tn&type=json&resource_id=52109&query=2024%E5%B9%B410%E6%9C%88&apiType=yearMonthData&cb=jsonp_1720165959586_41845
 const BAIDU_OP_URL = 'https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?co=&resource_id=39043&t=1624698379808&ie=utf8&oe=utf8&cb=op_aladdin_callback&format=json&tn=wisetpl&_=1624698374167'
 
 export async function getOpAladdin(year: number, month: number): Promise<Almanac[]> {
