@@ -13,7 +13,14 @@ export interface Almanac {
     avoid: string // 忌
     cnDay: string // 星期，汉字
     day: number // 公历日
-    desc: string // 节日
+    desc?: string // 节日
+    festivalInfoList?: {
+        baikeId: string // 百度百科ID
+        baikeName: string // 百度百科名称
+        baikeUrl: string // 百度百科链接
+        name: string // 同desc，节日名称
+    }[]
+    festivalList?: string // 当日所有节日、节气、纪念日，以逗号分割
     gzDate: string // 日干支
     gzMonth: string // 月干支
     gzYear: string // 年干支
@@ -32,30 +39,23 @@ export interface Almanac {
     year: number // 公历年份
     status: Almanac_status // 类型
     date: string
+    yjJumpUrl: string // 宜忌查看跳转链接
+    yj_from: string // 宜忌来源
 
     legalHoliday?: string
 }
 
-interface OpAladdinRes {
-    status: number;
-    data: {
-        almanac: Almanac[]
-    }[];
-}
-// FIXME: 接口已经换了，需要重新适配
-// https://opendata.baidu.com/data/inner?tn=reserved_all_res_tn&type=json&resource_id=52109&query=2024%E5%B9%B410%E6%9C%88&apiType=yearMonthData&cb=jsonp_1720165959586_41845
-const BAIDU_OP_URL = 'https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?co=&resource_id=39043&t=1624698379808&ie=utf8&oe=utf8&cb=op_aladdin_callback&format=json&tn=wisetpl&_=1624698374167'
+const BAIDU_OP_URL = 'https://opendata.baidu.com/data/inner?tn=reserved_all_res_tn&type=json&resource_id=52109&query=2024%E5%B9%B410%E6%9C%88&apiType=yearMonthData'
 
 export async function getOpAladdin(year: number, month: number): Promise<Almanac[]> {
     const query_month = `${year}年${month}月`
     const query_url = BAIDU_OP_URL + `&query=${encodeURIComponent(query_month)}`
-    const jsonp_res = await axios.get(query_url)
+    const res = await axios.get(query_url)
 
-    const json_string = jsonp_res.data.split('op_aladdin_callback(').pop().split(')').shift()
-    const res = JSON.parse(json_string) as OpAladdinRes
+    const data = res.data.Result[0].DisplayData.resultData.tplData.data.almanac as Almanac[]
 
     // 日期按时间线排序
-    return res.data[0].almanac.map(a => {
+    return data.map(a => {
         return {...a, date: moment(a.oDate).utcOffset(8).format('YYYYMMDD')}
     }).sort((a, b) => moment(b.oDate).diff(moment(a.oDate))) as Almanac[]
 }

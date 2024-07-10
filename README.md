@@ -12,7 +12,7 @@
 
 ```bash
 npm i
-npm run dump_data // 默认抓取2015-2022年的数据 `./export/${year}.json`
+npm run dump_data // 默认抓取2015-2025年的数据 `./export/${year}.json`
 
 npm run merge_data // 合并到同一个文件 `./export/2015-2022.json`
 ```
@@ -36,7 +36,14 @@ export interface Almanac {
     avoid: string // 忌
     cnDay: string // 星期，汉字
     day: number // 公历日
-    desc: string // 节日
+    desc?: string // 节日
+    festivalInfoList?: {
+        baikeId: string // 百度百科ID
+        baikeName: string // 百度百科名称
+        baikeUrl: string // 百度百科链接
+        name: string // 同desc，节日名称
+    }[]
+    festivalList?: string // 当日所有节日、节气、纪念日，以逗号分割
     gzDate: string // 日干支
     gzMonth: string // 月干支
     gzYear: string // 年干支
@@ -54,39 +61,51 @@ export interface Almanac {
     value: string // 国家纪念日、国际节日、三九天（如国际艾滋病日、中国国家警察日、一九等）
     year: number // 公历年份
     status: Almanac_status // 类型
+    date: string
+    yjJumpUrl: string // 宜忌查看跳转链接
+    yj_from: string // 宜忌来源
 
-    legalHoliday: string // 当 status = 1时，标识出因为哪个法定节日休息
+    legalHoliday?: string
 }
 ```
 
 ```json
 {
-        "animal": "虎",
-        "avoid": "装修.入宅.动土.安床.出行.上梁.作灶.旅游.修造.伐木.经络.求医.竖柱.作梁.词讼.置产.出师.打官司",
-        "cnDay": "六",
-        "day": "1",
-        "desc": "元旦",
-        "festival": "元旦",
-        "gzDate": "丙辰",
-        "gzMonth": "戊子",
-        "gzYear": "庚寅",
-        "isBigMonth": "",
-        "lDate": "廿七",
-        "lMonth": "十一",
-        "lunarDate": "27",
-        "lunarMonth": "11",
-        "lunarYear": "2010",
-        "month": "1",
-        "oDate": "2010-12-31T16:00:00.000Z",
-        "status": "1",
-        "suit": "搬家.开业.结婚.领证.开工.订婚.安葬.开张.入学.求嗣.破土.祈福.祭祀.拆卸.开市.纳财.纳畜.裁衣.出火.开光.嫁娶.纳采.移徙.盖屋.冠笄.斋醮.求财.招赘.挂匾.纳婿",
-        "term": "",
-        "type": "h",
-        "value": "元旦",
-        "year": "2011",
-        "date": "2011-1-1",
-        "legalHoliday": "元旦"
-    },
+    "animal": "猪",
+    "avoid": "诸事不宜",
+    "cnDay": "三",
+    "day": "1",
+    "festivalInfoList": [
+        {
+            "baikeId": "137017",
+            "baikeName": "元旦",
+            "baikeUrl": "https://baike.baidu.com/item/元旦/137017",
+            "name": "元旦"
+        }
+    ],
+    "festivalList": "元旦",
+    "gzDate": "癸卯",
+    "gzMonth": "丙子",
+    "gzYear": "己亥",
+    "isBigMonth": "1",
+    "lDate": "初七",
+    "lMonth": "腊",
+    "lunarDate": "7",
+    "lunarMonth": "12",
+    "lunarYear": "2019",
+    "month": "1",
+    "oDate": "2019-12-31T16:00:00Z",
+    "status": "1",
+    "suit": "馀事勿取.铺路",
+    "term": "元旦",
+    "timestamp": "1577808000",
+    "type": "h",
+    "year": "2020",
+    "yjJumpUrl": "https://mobile.51wnl-cq.com/huangli_tab_h5/?posId=BDSS&STIME=2020-01-01",
+    "yj_from": "51wnl",
+    "date": "20200101",
+    "legalHoliday": "元旦节"
+}
 ```
 
 ### TODOLIST

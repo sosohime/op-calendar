@@ -26,7 +26,7 @@ const needKeys: (keyof Almanac)[] = [
 ]
 
 let startYear = 2000
-const endYear = 2023
+const endYear = 2025
 
 // 穷举年份组合（如2011年 - 2020年，2021年 - 2022年）
 while(startYear < endYear) {
